@@ -42,9 +42,11 @@ struct CharacterSheet {
     AbilityModifiers: [i8; 6],
 }
 
-fn main_menu(cs: &CharacterSheet) {
+fn main_menu(cs: &CharacterSheet) -> bool {
     println!("| n - Change Name | r - Change Race | c - Change Class | s - Save Character | q - Quit |");
     let select = user_input();
+    // I do not know what I am doing
+    let mut is_quit: bool = false;
     match select {
         'n' => println!("Change Name"),
         'r' => println!("Change Race"),
@@ -54,9 +56,13 @@ fn main_menu(cs: &CharacterSheet) {
                     clear_screen();
                     display_charactersheet(cs);
                 },
-        'q' => println!("Quit"),
+        'q' =>  {
+                    is_quit = true;
+                    println!("Quitting Program");
+                },
         _ => println!("Invalid Selection")
     }
+    is_quit
 }
 
 fn user_input() -> char {
@@ -138,6 +144,9 @@ fn main() {
     display_charactersheet(&cs);
     loop {
         // print!("\x1B[2J\x1B[1;1H");
-        main_menu(&cs);
+        let is_quit = main_menu(&cs);
+        if is_quit {
+            break;
+        }
     }
 }
