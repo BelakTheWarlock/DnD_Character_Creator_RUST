@@ -81,6 +81,7 @@ fn new_character(name: String, race: Race, class: Class) -> CharacterSheet {
 }
 
 fn display_charactersheet(cs: &CharacterSheet) {
+    // Cringe::Start
     println!();
     println!("|        Name: {:?}", cs.Name);
     println!("|         Age: {:?}", cs.Age);
@@ -92,6 +93,7 @@ fn display_charactersheet(cs: &CharacterSheet) {
     println!("|Intelligence: {}({})", cs.AbilityScores[3], cs.AbilityModifiers[3]);
     println!("|      Widsom: {}({})", cs.AbilityScores[4], cs.AbilityModifiers[4]);
     println!("|    Charisma: {}({})", cs.AbilityScores[5], cs.AbilityModifiers[5]);
+    // Cringe::End
 }
 
 fn _roll_1d6() -> i8 {
